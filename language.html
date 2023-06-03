@@ -7,26 +7,50 @@
     <title>Language-Detection</title>
 </head>
 <body>
+    <input type="text" id="searchInput" placeholder="Enter a word">
+      <button id="searchButton">Search</button>
+      <div id="resultsContainer" class="result"></div>
     <script>
-        async function hello(){
-        var text = 'Hello world!';
+        const searchButton=document.getElementById('searchButton');
+        const resultsContainer=document.getElementById('resultsContainer');
+
+        searchButton.addEventListener('click', function() {
+          const searchInput = document.getElementById('searchInput');
+          const text = searchInput.value.trim();
+    
+          if (text !== '') {
+            getLanguage(text);
+          }
+        });
+        async function  getLanguage(text){
+        
         try{
-        const response = await fetch('https://api.api-ninjas.com/v1/textlanguage?text=' + text, {
+        const response = await fetch(`https://api.api-ninjas.com/v1/textlanguage?text=${text}`, {
                         headers: {
                             'X-Api-Key': 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs'
                         },
-                    }
-       );
+                    });
         if(response.ok){
             const data= await response.json();
             console.log(data);
+            displayResults(data);
         }else {
             console.error('Request failed with status:', response.status);
             }}catch (error) {
             console.error('An error occurred:', error);
           }
         }
-        hello();
+        function displayResults(data){
+            resultsContainer.innerHTML = '';
+
+          const language = data.language;
+          const languageElement = document.createElement('p');
+          languageElement.textContent = language;
+          languageElement.classList.add('lang');
+          resultsContainer.appendChild(languageElement);
+
+        }
+        
     </script>
 </body>
 </html>
