@@ -52,6 +52,11 @@ const searchButton = document.getElementById('searchButton');
             resultsContainer.textContent = 'No results found.';
             return;
           }
+        //   Display the word
+          const name = results.word;
+          const wordElement = document.createElement('h1');
+          wordElement.textContent = name;
+          resultsContainer.appendChild(wordElement);
           
           // Display the definition
           const definition = results.definition;
