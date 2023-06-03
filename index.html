@@ -9,28 +9,55 @@
       <div id="resultsContainer" class="result"></div>
     </body>
     <script>
-async function getWord() {
-  var word = 'code';
-
-  try {
-    const response = await fetch(
-      'https://api.api-ninjas.com/v1/dictionary?word=' + word,
-      {
-        headers: { 'X-Api-Key': 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs' }
-      }
-    );
-
-    if (response.ok) {
-      const result = await response.json();
-      console.log(result);
-    } else {
-      console.error('Request failed with status:', response.status);
-    }
-  } catch (error) {
-    console.error('An error occurred:', error);
-  }
-}
-
-getWord();
+const searchButton = document.getElementById('searchButton');
+        const resultsContainer = document.getElementById('resultsContainer');
+    
+        searchButton.addEventListener('click', function() {
+          const searchInput = document.getElementById('searchInput');
+          const word = searchInput.value.trim();
+    
+          if (word !== '') {
+            getWord(word);
+          }
+        });
+    
+        async function getWord(word) {
+            
+          const apiKey = 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs';
+          const url = `https://api.api-ninjas.com/v1/dictionary?word=${word}`;
+          console.log(url);
+          try {
+            const response = await fetch(url, {
+              headers: {
+                'X-Api-Key': apiKey,
+              },
+            });
+    
+            if (response.ok) {
+              const data = await response.json();
+              console.log(data);
+              displayResults(data);
+            } else {
+              console.error('Request failed with status:', response.status);
+            }
+          } catch (error) {
+            console.error('An error occurred:', error);
+          }
+        }
+    
+        function displayResults(results) {
+          resultsContainer.innerHTML = ''; // Clear previous results
+    
+          if (results.length === 0) {
+            resultsContainer.textContent = 'No results found.';
+            return;
+          }
+          
+          // Display the definition
+          const definition = results.definition;
+          const definitionElement = document.createElement('p');
+          definitionElement.textContent = definition;
+          resultsContainer.appendChild(definitionElement);
+        }
     </script>
     </html>
