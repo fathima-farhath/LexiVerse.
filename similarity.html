@@ -55,6 +55,7 @@
                 const similarity = results.similarity;
                 const similarityElement = document.createElement('p');
                 similarityElement.textContent = `Similarity: ${similarity}`;
+                similarityElement.classList.add('similarity-class');
                 resultContainer.appendChild(similarityElement);
             } else {
                 resultContainer.textContent = 'No results found.';
