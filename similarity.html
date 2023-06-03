@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-Similarity</title>
+</head>
+<body>
+    <input type="text" id="searchInput1" placeholder="Enter a Paragraph or word">
+    <input type="text" id="searchInput2" placeholder="Enter a Paragraph or word">
+
+    <button id="searchButton1">Check similarity</button>
+    <div id="resultsContainer1" class="result"></div>
+
+
+    <script>
+        const searchButton = document.getElementById('searchButton1');
+        const resultContainer = document.getElementById('resultsContainer1');
+
+        searchButton.addEventListener('click', async function () {
+            const searchInput1 = document.getElementById('searchInput1');
+            const para1 = searchInput1.value.trim();
+            const searchInput2 = document.getElementById('searchInput2');
+            const para2 = searchInput2.value.trim();
+
+            if (para1 !== '' && para2 !== '') {
+                try {
+                    const response = await fetch('https://api.api-ninjas.com/v1/textsimilarity', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Api-Key': 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs'
+                        },
+                        body: JSON.stringify({ "text_1": para1, "text_2": para2 })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log(result);
+                        displayResults(result);
+                    } else {
+                        console.error('Request failed with status:', response.status);
+                    }
+                } catch (error) {
+                    console.error('An error occurred:', error);
+                }
+            }
+        });
+
+        function displayResults(results) {
+            resultContainer.innerHTML = ''; // Clear previous results
+
+            if (results.similarity !== undefined) {
+                const similarity = results.similarity;
+                const similarityElement = document.createElement('p');
+                similarityElement.textContent = `Similarity: ${similarity}`;
+                resultContainer.appendChild(similarityElement);
+            } else {
+                resultContainer.textContent = 'No results found.';
+            }
+        }
+    </script>
+    
+   
+</body>
+</html>

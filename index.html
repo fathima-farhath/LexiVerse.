@@ -9,7 +9,7 @@
       <div id="resultsContainer" class="result"></div>
     </body>
     <script>
-const searchButton = document.getElementById('searchButton');
+        const searchButton = document.getElementById('searchButton');
         const resultsContainer = document.getElementById('resultsContainer');
     
         searchButton.addEventListener('click', function() {
@@ -25,7 +25,7 @@ const searchButton = document.getElementById('searchButton');
             
           const apiKey = 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs';
           const url = `https://api.api-ninjas.com/v1/dictionary?word=${word}`;
-          console.log(url);
+        //   console.log(url);
           try {
             const response = await fetch(url, {
               headers: {
@@ -35,7 +35,7 @@ const searchButton = document.getElementById('searchButton');
     
             if (response.ok) {
               const data = await response.json();
-              console.log(data);
+            //   console.log(data);
               displayResults(data);
             } else {
               console.error('Request failed with status:', response.status);
@@ -55,13 +55,15 @@ const searchButton = document.getElementById('searchButton');
         //   Display the word
           const name = results.word;
           const wordElement = document.createElement('h1');
-          wordElement.textContent = name;
+          wordElement.textContent = '${name}:';
+          wordElement.classList.add('word')
           resultsContainer.appendChild(wordElement);
           
           // Display the definition
           const definition = results.definition;
           const definitionElement = document.createElement('p');
           definitionElement.textContent = definition;
+          definitionElement.classList.add('def');
           resultsContainer.appendChild(definitionElement);
         }
     </script>
