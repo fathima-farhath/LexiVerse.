@@ -1,70 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <title>Dictionary</title>
-    </head>
-    <body>
-      <input type="text" id="searchInput" placeholder="Enter a word">
-      <button id="searchButton">Search</button>
-      <div id="resultsContainer" class="result"></div>
-    </body>
-    <script>
-        const searchButton = document.getElementById('searchButton');
-        const resultsContainer = document.getElementById('resultsContainer');
-    
-        searchButton.addEventListener('click', function() {
-          const searchInput = document.getElementById('searchInput');
-          const word = searchInput.value.trim();
-    
-          if (word !== '') {
-            getWord(word);
-          }
-        });
-    
-        async function getWord(word) {
-            
-          const apiKey = 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs';
-          const url = `https://api.api-ninjas.com/v1/dictionary?word=${word}`;
-        //   console.log(url);
-          try {
-            const response = await fetch(url, {
-              headers: {
-                'X-Api-Key': apiKey,
-              },
-            });
-    
-            if (response.ok) {
-              const data = await response.json();
-            //   console.log(data);
-              displayResults(data);
-            } else {
-              console.error('Request failed with status:', response.status);
-            }
-          } catch (error) {
-            console.error('An error occurred:', error);
-          }
-        }
-    
-        function displayResults(results) {
-          resultsContainer.innerHTML = ''; // Clear previous results
-    
-          if (results.length === 0) {
-            resultsContainer.textContent = 'No results found.';
-            return;
-          }
-        //   Display the word
-          const name = results.word;
-          const wordElement = document.createElement('h1');
-          wordElement.textContent = '${name}:';
-          wordElement.classList.add('word')
-          resultsContainer.appendChild(wordElement);
-          
-          // Display the definition
-          const definition = results.definition;
-          const definitionElement = document.createElement('p');
-          definitionElement.textContent = definition;
-          definitionElement.classList.add('def');
-          resultsContainer.appendChild(definitionElement);
-        }
-    </script>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <header>
+          <nav>
+            <div class="logo">
+              <h2 class="logo-text"><span class="Lexi">Lexi</span>Verse.</h2>
+            </div>
+            <ul lass="links">
+              <li class="link"><a href="">Dictionary</a></li>
+              <li class="link"><a href="">Text Similarity</a></li>
+              <li class="link"><a href="">Language Detection</a></li>
+              <li class="link"><a href="">Image To Text</a></li>
+            </ul>
+          </nav>
+        </header>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Welcome to LexiVerse</h1>
+                <p>Your ultimate language companion for dictionary, language detection,<br> text similarity, and image to text conversion.</p>
+                <a href="#dictionary" class="cta-button">Get Started</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Dictionary</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="content">
+        <header>
+          <nav>
+            <div class="logo">
+              <h2>LexiVerse.</h2>
+            </div>
+            <ul lass="links">
+              <li class="link"><a href="">Dictionary</a></li>
+              <li class="link"><a href="">Text Similarity</a></li>
+              <li class="link"><a href="">Language Detection</a></li>
+              <li class="link"><a href="">Image To Text</a></li>
+            </ul>
+          </nav>
+        </header>
+      <input type="text" id="searchInput" placeholder="Enter a word">
+      <button id="searchButton">Search</button>
+      <div id="resultsContainer" class="result"></div>
+
+    </div>
+    </body>
+    <script>
+        const searchButton = document.getElementById('searchButton');
+        const resultsContainer = document.getElementById('resultsContainer');
+    
+        searchButton.addEventListener('click', function() {
+          const searchInput = document.getElementById('searchInput');
+          const word = searchInput.value.trim();
+    
+          if (word !== '') {
+            getWord(word);
+          }
+        });
+    
+        async function getWord(word) {
+            
+          const apiKey = 'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs';
+          const url = `https://api.api-ninjas.com/v1/dictionary?word=${word}`;
+        //   console.log(url);
+          try {
+            const response = await fetch(url, {
+              headers: {
+                'X-Api-Key': apiKey,
+              },
+            });
+    
+            if (response.ok) {
+              const data = await response.json();
+            //   console.log(data);
+              displayResults(data);
+            } else {
+              console.error('Request failed with status:', response.status);
+            }
+          } catch (error) {
+            console.error('An error occurred:', error);
+          }
+        }
+    
+        function displayResults(results) {
+          resultsContainer.innerHTML = ''; // Clear previous results
+    
+          if (results.length === 0) {
+            resultsContainer.textContent = 'No results found.';
+            return;
+          }
+        //   Display the word
+          const name = results.word;
+          const wordElement = document.createElement('h1');
+          wordElement.textContent = '${name}:';
+          wordElement.classList.add('word')
+          resultsContainer.appendChild(wordElement);
+          
+          // Display the definition
+          const definition = results.definition;
+          const definitionElement = document.createElement('p');
+          definitionElement.textContent = definition;
+          definitionElement.classList.add('def');
+          resultsContainer.appendChild(definitionElement);
+        }
+    </script>
+    </html>
