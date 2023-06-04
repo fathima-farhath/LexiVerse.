@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Text</title>
+</head>
+<body>
+  <input type="file" id="imageInput">
+  <button id="convertButton">Convert</button>
+  <div id="resultContainer"></div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const convertButton = document.getElementById('convertButton');
+    const resultContainer = document.getElementById('resultContainer');
+
+    convertButton.addEventListener('click', function() {
+      const file = imageInput.files[0];
+
+      if (file) {
+        convertImageToText(file);
+      } else {
+        resultContainer.textContent = 'No image selected.';
+      }
+    });
+
+    function convertImageToText(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      fetch('https://api.api-ninjas.com/v1/imagetotext', {
+        method: 'POST',
+        headers:{
+            'X-Api-Key':'VIPh5MqSP4BGFggC2b2xDA==0js8ZNCDWMjKvFGs'
+        },
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(result => {
+          displayResult(result);
+        })
+        .catch(error => {
+          resultContainer.textContent = 'An error occurred.';
+          console.error(error);
+        });
+    }
+
+    function displayResult(result) {
+      resultContainer.textContent = result.text;
+    }
+  </script>
+</body>
+</html>
