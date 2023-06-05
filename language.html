@@ -5,11 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language-Detection</title>
+    <link rel="stylesheet" href="css/dict.css">
+
 </head>
 <body>
+  <div class="nav">
+  <header>
+
+    <nav>
+      <div class="logo">
+        <h2 class="logo-text">LexiVerse.</h2>
+      </div>
+      <ul lass="links">
+        <li class="link"><a href="">Dictionary</a></li>
+        <li class="link"><a href="">Text Similarity</a></li>
+        <li class="link"><a href="">Language Detection</a></li>
+        <li class="link"><a href="">Image To Text</a></li>
+      </ul>
+    </nav>
+  </header>
+  </div>
+  <div class="content">
     <input type="text" id="searchInput" placeholder="Enter a word">
       <button id="searchButton">Search</button>
       <div id="resultsContainer" class="result"></div>
+      </div>
     <script>
         const searchButton=document.getElementById('searchButton');
         const resultsContainer=document.getElementById('resultsContainer');

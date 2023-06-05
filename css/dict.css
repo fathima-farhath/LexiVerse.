@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+header{
+   padding: 20px;
+   background: #4d2a33;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.logo{
+    border: dashed #C88EA7 0.5px;
+    padding: 2px;
+}
+.logo-text{
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-flex;
+    margin-left: 30px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+   #searchInput {
+    border-radius: 50px;
+    outline: hidden;
+    /* border: 20px #4d2a33 solid; */
+    width: 55vw;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(77, 42, 51, 0.6),
+              0 2px 20px 0 rgba(77, 42, 51, 0.4),
+              0 4px 25px 0 rgba(77, 42, 51, 0.2);
+  }
+  
+  #searchButton {
+    background-color: #4d2a33;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .dict-caption{
+    font-size: 30px;
+    font-weight: bold;
+    color: #4d2a33;
+    margin-bottom: 50px;  
+    text-align: center;
+}
+   .result {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px 0 rgba(77, 42, 51, 0.6),
+              0 2px 20px 0 rgba(77, 42, 51, 0.4),
+              0 4px 25px 0 rgba(77, 42, 51, 0.2);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    background-color: #4d2a33;
+    border-radius: 5px;
+  }
+  
+  .word {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .def {
+    font-size: 16px;
+    color: #f7f6f6;
+    
+  }
+    
+  .footer{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4d2a33;
+}
