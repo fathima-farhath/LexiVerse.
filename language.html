@@ -9,26 +9,28 @@
 
 </head>
 <body>
+  <div class="main">
   <div class="nav">
-  <header>
-    <nav>
-      <div class="logo">
-        <h2 class="logo-text">LexiVerse.</h2>
-      </div>
-      <ul lass="links">
-        <li class="link"><a href="">Dictionary</a></li>
-        <li class="link"><a href="">Text Similarity</a></li>
-        <li class="link"><a href="">Language Detection</a></li>
-        <li class="link"><a href="">Image To Text</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+      <nav>
+        <div class="logo">
+          <h2 class="logo-text"><span class="Lexi">Lexi</span>Verse.</h2>
+        </div>
+        <ul lass="links">
+          <li class="link"><a href="dictionary.html">Dictionary</a></li>
+          <li class="link"><a href="similarity.html">Text Similarity</a></li>
+          <li class="link"><a href="language.html">Language Detection</a></li>
+          <li class="link"><a href="image.html">Image To Text</a></li>
+        </ul>
+      </nav>
+    </header>
   </div>
   <div class="content">
     <input type="text" id="searchInput" placeholder="Enter a word">
       <button id="searchButton">Search</button>
       <div id="resultsContainer" class="results"></div>
   </div>
+</div>
     <script>
         const searchButton=document.getElementById('searchButton');
         const resultsContainer=document.getElementById('resultsContainer');
@@ -68,6 +70,7 @@
           languageElement.classList.add('lang');
           resultsContainer.appendChild(languageElement);
 
+          resultsContainer.style.display = 'block';
         }
         
     </script>
