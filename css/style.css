@@ -42,8 +42,10 @@ nav ul li a{
     padding: 3%;
     /* background-color: #eb1818; */
     background-image:
+    /* linear-gradient(to right, #99627A, rgba(117, 19, 93, 0.73)),
+    url('img1.jpg'); */
     linear-gradient(to right, #99627A, rgba(117, 19, 93, 0.73)),
-    url('img1.jpg');
+    url('../img1.jpg');
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);    background-color: #ccc;
 }
 .hero-content h1 {
@@ -154,4 +156,8 @@ section p {
     section{
         width: 100vw;
     }
+    .cta-button{
+        margin-bottom: 20px;
+    }
+
 }
