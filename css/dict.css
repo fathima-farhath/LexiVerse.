@@ -43,7 +43,7 @@ body{
     justify-content: center;
     padding: 10%;
 }
-   #searchInput {
+   #searchInput{
     border-radius: 50px;
     outline: hidden;
     /* border: 20px #4d2a33 solid; */
@@ -56,7 +56,10 @@ body{
               0 2px 20px 0 rgba(77, 42, 51, 0.4),
               0 4px 25px 0 rgba(77, 42, 51, 0.2);
   }
-  #searchButton {
+  #imageInput{
+    margin-bottom:30px;
+  }
+  #searchButton,#convertButton  {
     background-color: #4d2a33;
     color: #fff;
     border: none;
@@ -122,3 +125,15 @@ body{
     justify-content: center;
     background-color: #4d2a33;
   }
+  @media screen and (max-width: 480px) {
+    .result{
+        margin-bottom: 20%;
+    }
+    #searchInput {
+      width: 75vw;
+  }
+  .footer {
+    font-size: 15px;
+    height: 8vh;
+  }
+}

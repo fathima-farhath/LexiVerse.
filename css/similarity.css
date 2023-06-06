@@ -112,12 +112,14 @@ body{
     .result{
         margin-bottom: 10%;
     }
-    #searchButton1{
-    /* margin-bottom: 100px; */
-    }
+    
 }
 @media screen and (max-width: 580px) {
     .result{
         margin-bottom: 20%;
+    }
+    .footer {
+      font-size: 15px;
+      height: 8vh;
     }
 }
