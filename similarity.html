@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text-Similarity</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/similarity.css">
 </head>
+
 <body>
     <header>
         <nav>
@@ -21,13 +22,16 @@
           </ul>
         </nav>
       </header>
+      <div class="content">
     <input type="text" id="searchInput1" placeholder="Enter a Paragraph or word">
     <input type="text" id="searchInput2" placeholder="Enter a Paragraph or word">
 
-    <button id="searchButton1">Check similarity</button>
+</div>
+<button id="searchButton1">Check similarity</button>
     <div id="resultsContainer1" class="result"></div>
-
-
+<footer class="footer">
+    <p>&copy; 2023 LexiVerse. All rights reserved.</p>
+</footer>
     <script>
         const searchButton = document.getElementById('searchButton1');
         const resultContainer = document.getElementById('resultsContainer1');
@@ -71,10 +75,14 @@
                 similarityElement.textContent = `Similarity: ${similarity}`;
                 similarityElement.classList.add('similarity-class');
                 resultContainer.appendChild(similarityElement);
+
+                resultContainer.style.display = 'block';
+
             } else {
                 resultContainer.textContent = 'No results found.';
             }
         }
+
     </script>
     
    
